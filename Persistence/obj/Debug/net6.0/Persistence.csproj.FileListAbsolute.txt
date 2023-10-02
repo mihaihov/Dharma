@@ -1,0 +1,17 @@
+C:\Users\raducu\Desktop\Proiecte\Networking\Networking\Persistence\bin\Debug\net6.0\Persistence.deps.json
+C:\Users\raducu\Desktop\Proiecte\Networking\Networking\Persistence\bin\Debug\net6.0\Persistence.dll
+C:\Users\raducu\Desktop\Proiecte\Networking\Networking\Persistence\bin\Debug\net6.0\Persistence.pdb
+C:\Users\raducu\Desktop\Proiecte\Networking\Networking\Persistence\bin\Debug\net6.0\Application.dll
+C:\Users\raducu\Desktop\Proiecte\Networking\Networking\Persistence\bin\Debug\net6.0\Domain.dll
+C:\Users\raducu\Desktop\Proiecte\Networking\Networking\Persistence\bin\Debug\net6.0\Application.pdb
+C:\Users\raducu\Desktop\Proiecte\Networking\Networking\Persistence\bin\Debug\net6.0\Domain.pdb
+C:\Users\raducu\Desktop\Proiecte\Networking\Networking\Persistence\obj\Debug\net6.0\Persistence.csproj.AssemblyReference.cache
+C:\Users\raducu\Desktop\Proiecte\Networking\Networking\Persistence\obj\Debug\net6.0\Persistence.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\raducu\Desktop\Proiecte\Networking\Networking\Persistence\obj\Debug\net6.0\Persistence.AssemblyInfoInputs.cache
+C:\Users\raducu\Desktop\Proiecte\Networking\Networking\Persistence\obj\Debug\net6.0\Persistence.AssemblyInfo.cs
+C:\Users\raducu\Desktop\Proiecte\Networking\Networking\Persistence\obj\Debug\net6.0\Persistence.csproj.CoreCompileInputs.cache
+C:\Users\raducu\Desktop\Proiecte\Networking\Networking\Persistence\obj\Debug\net6.0\Persistence.csproj.CopyComplete
+C:\Users\raducu\Desktop\Proiecte\Networking\Networking\Persistence\obj\Debug\net6.0\Persistence.dll
+C:\Users\raducu\Desktop\Proiecte\Networking\Networking\Persistence\obj\Debug\net6.0\refint\Persistence.dll
+C:\Users\raducu\Desktop\Proiecte\Networking\Networking\Persistence\obj\Debug\net6.0\Persistence.pdb
+C:\Users\raducu\Desktop\Proiecte\Networking\Networking\Persistence\obj\Debug\net6.0\ref\Persistence.dll
