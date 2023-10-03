@@ -1,42 +1,51 @@
 ﻿using Application.Contracts.Persistence;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace Persistence.Repositories
 {
     public class BaseRepository<T> : IAsyncRepository<T> where T : class
     {
-        public Task<T> AddAsync(T entity)
+        protected readonly ApplicationDbContext _dbContext;
+
+        public BaseRepository(ApplicationDbContext dbContext)
         {
-            throw new NotImplementedException();
+            _dbContext = dbContext;
         }
 
-        public Task<T> DeleteAsync(T entity)
+        public async Task<T> AddAsync(T entity)
         {
-            throw new NotImplementedException();
+            await _dbContext.Set<T>().AddAsync(entity);
+            await _dbContext.SaveChangesAsync();
+
+            return entity;
         }
 
-        public Task<T?> GetByIdAsync(Guid id)
+        public async Task DeleteAsync(T entity)
         {
-            throw new NotImplementedException();
+            _dbContext.Set<T>().Remove(entity);
+            await _dbContext.SaveChangesAsync();
         }
 
-        public Task<IReadOnlyList<T>> GetPagedResponseAsync(int page, int size)
+        public async Task<T?> GetByIdAsync(Guid id)
         {
-            throw new NotImplementedException();
+            T? entity = await _dbContext.Set<T>().FindAsync(id);
+            return entity;
         }
 
-        public Task<IReadOnlyList<T>> ListAllAsync()
+        public async Task<IReadOnlyList<T>> GetPagedResponseAsync(int page, int size)
         {
-            throw new NotImplementedException();
+            return await _dbContext.Set<T>().Skip((page - 1) * size).Take(size).AsNoTracking().ToListAsync();
         }
 
-        public Task<T> UpdateAsync(T entity)
+        public async Task<IReadOnlyList<T>> ListAllAsync()
         {
-            throw new NotImplementedException();
+            return await _dbContext.Set<T>().ToListAsync();
+        }
+
+        public async Task UpdateAsync(T entity)
+        {
+            _dbContext.Entry(entity).State = EntityState.Modified;
+            await _dbContext.SaveChangesAsync();
         }
     }
 }
