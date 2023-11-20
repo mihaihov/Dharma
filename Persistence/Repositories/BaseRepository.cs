@@ -32,11 +32,6 @@ namespace Persistence.Repositories
             return entity;
         }
 
-        public async Task<IReadOnlyList<T>> GetPagedResponseAsync(int page, int size)
-        {
-            return await _dbContext.Set<T>().Skip((page - 1) * size).Take(size).AsNoTracking().ToListAsync();
-        }
-
         public async Task<IReadOnlyList<T>> ListAllAsync()
         {
             return await _dbContext.Set<T>().ToListAsync();

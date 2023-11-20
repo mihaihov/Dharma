@@ -15,6 +15,6 @@ namespace Application.Features.NetworkDevices.Responses
 
         }
 
-        public IReadOnlyList<NetworkDevice>? networkDevices;
+        public IReadOnlyList<NetworkDevice>? networkDevices { get; set; }
     }
 }
