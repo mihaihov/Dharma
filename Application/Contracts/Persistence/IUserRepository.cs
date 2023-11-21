@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Application.Contracts.Persistence
 {
-    public interface IUserRepository : IAsyncRepository<User>
+    public interface IUserRepository
     {
         public Task<User?> GetByUserNameAsync(string userName);
     }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Application.Contracts.Persistence
 {
-    public interface INetworkDeviceRepository : IAsyncRepository<NetworkDevice>
+    public interface INetworkDeviceRepository
     {
         public Task<NetworkDevice?> GetByHostNameAsync(string hostName);
     }
