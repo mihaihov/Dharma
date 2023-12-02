@@ -1,4 +1,6 @@
-﻿using Application.Features.NetworkDevices.Commands;
+﻿using Application.Features.Ansible.Commands;
+using Application.Features.Ansible.Responses;
+using Application.Features.NetworkDevices.Commands;
 using Application.Features.NetworkDevices.Responses;
 using Domain.Entities;
 using MediatR;
@@ -26,6 +28,13 @@ namespace Api.Controllers
 
         [HttpGet(Name = "GetNetworkDeviceByHostName")]
         public async Task<ActionResult<QueryNetworkDeviceByHostNameCommandResponse>> GetNetworkDeviceByHostName([FromBody] QueryNetworkDeviceByHostNameCommand command)
+        {
+            var result = await _mediator.Send(command);
+            return Ok(result);
+        }
+
+        [HttpGet("ciscodeviceinformation", Name = "GetCiscoDeviceInformation")]
+        public async Task<ActionResult<CiscoDeviceInformationCommandResponse>> GetCiscoDeviceInformation([FromBody] CiscoDeviceInformationCommand command)
         {
             var result = await _mediator.Send(command);
             return Ok(result);

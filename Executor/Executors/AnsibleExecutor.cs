@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using Renci.SshNet;
 
 namespace Executor.Executors
 {
@@ -24,9 +25,27 @@ namespace Executor.Executors
             PlaybooksPath = (string)ansibleMachineInformation["PlaybooksPath"];
         }
 
-        public Task<string> ExecutePlaybookAsync(string playbookName)
+        public string ExecutePlaybookMockAsync(string playbookName)
         {
-            throw new NotImplementedException();
+            // connect remotely to lro01-asn-p02 and execute the playbook. 
+            // Check ChatGPT - Determine SNMP version
+
+            using (var client = new SshClient(RedHatMachineIP!.ToString(), 22, "mihairaducu", "LiDl!2#41@3$"))
+            {
+                client.Connect();
+
+                if(client.IsConnected)
+                {
+                    string command = "ansible-playbook -i " + InventoryPath + " " + PlaybooksPath + "/" + playbookName;
+                    var result = client.RunCommand(command);
+
+                    client.Disconnect();
+
+                    return result.Result ;
+                }
+            }
+
+            return string.Empty;
         }
     }
 }

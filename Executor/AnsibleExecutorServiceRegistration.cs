@@ -6,7 +6,7 @@ namespace Executor
 {
     public static class AnsibleExecutorServiceRegistration
     {
-        public static IServiceCollection AddPersistenceServices(this IServiceCollection services)
+        public static IServiceCollection AddAnsibleExecutorServices(this IServiceCollection services)
         {
             services.AddScoped<IBaseExecutor, AnsibleExecutor>();
 

@@ -1,6 +1,7 @@
 ﻿using Application;
 using Microsoft.EntityFrameworkCore;
 using Persistence;
+using Executor;
 
 namespace Api
 {
@@ -10,6 +11,7 @@ namespace Api
         {
             builder.Services.AddApplicationServices();
             builder.Services.AddPersistenceServices(builder.Configuration);
+            builder.Services.AddAnsibleExecutorServices();
 
             builder.Services.AddHttpContextAccessor();
             builder.Services.AddControllers();

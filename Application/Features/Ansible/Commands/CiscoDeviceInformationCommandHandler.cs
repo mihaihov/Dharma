@@ -38,8 +38,8 @@ namespace Application.Features.Ansible.Commands
 
             if(ciscoDeviceInformationResponse.Success)
             {
-                var result = await _baseExecutor.ExecutePlaybookAsync("getCiscoDeviceInformation.yml");
-                Console.WriteLine(result);
+                var result = _baseExecutor.ExecutePlaybookMockAsync("getCiscoDeviceInformation.yml");
+                ciscoDeviceInformationResponse.Software = result;
             }
 
             return ciscoDeviceInformationResponse;

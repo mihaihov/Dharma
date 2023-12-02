@@ -78,3 +78,9 @@ C:\Users\raducu\Desktop\Proiecte\Networking\Networking\Api\obj\Debug\net6.0\refi
 C:\Users\raducu\Desktop\Proiecte\Networking\Networking\Api\obj\Debug\net6.0\Api.pdb
 C:\Users\raducu\Desktop\Proiecte\Networking\Networking\Api\obj\Debug\net6.0\Api.genruntimeconfig.cache
 C:\Users\raducu\Desktop\Proiecte\Networking\Networking\Api\obj\Debug\net6.0\ref\Api.dll
+C:\Users\raducu\Desktop\Proiecte\Networking\Networking\Api\bin\Debug\net6.0\Renci.SshNet.Async.dll
+C:\Users\raducu\Desktop\Proiecte\Networking\Networking\Api\bin\Debug\net6.0\Renci.SshNet.dll
+C:\Users\raducu\Desktop\Proiecte\Networking\Networking\Api\bin\Debug\net6.0\SshNet.Security.Cryptography.dll
+C:\Users\raducu\Desktop\Proiecte\Networking\Networking\Api\bin\Debug\net6.0\System.Xml.XPath.XmlDocument.dll
+C:\Users\raducu\Desktop\Proiecte\Networking\Networking\Api\bin\Debug\net6.0\Executor.dll
+C:\Users\raducu\Desktop\Proiecte\Networking\Networking\Api\bin\Debug\net6.0\Executor.pdb
