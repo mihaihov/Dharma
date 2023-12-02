@@ -1,0 +1,17 @@
+C:\Users\raducu\Desktop\Proiecte\Networking\Networking\Executor\obj\Debug\net6.0\Executor.csproj.AssemblyReference.cache
+C:\Users\raducu\Desktop\Proiecte\Networking\Networking\Executor\obj\Debug\net6.0\Executor.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\raducu\Desktop\Proiecte\Networking\Networking\Executor\obj\Debug\net6.0\Executor.AssemblyInfoInputs.cache
+C:\Users\raducu\Desktop\Proiecte\Networking\Networking\Executor\obj\Debug\net6.0\Executor.AssemblyInfo.cs
+C:\Users\raducu\Desktop\Proiecte\Networking\Networking\Executor\obj\Debug\net6.0\Executor.csproj.CoreCompileInputs.cache
+C:\Users\raducu\Desktop\Proiecte\Networking\Networking\Executor\bin\Debug\net6.0\Executor.deps.json
+C:\Users\raducu\Desktop\Proiecte\Networking\Networking\Executor\bin\Debug\net6.0\Executor.dll
+C:\Users\raducu\Desktop\Proiecte\Networking\Networking\Executor\bin\Debug\net6.0\Executor.pdb
+C:\Users\raducu\Desktop\Proiecte\Networking\Networking\Executor\bin\Debug\net6.0\Application.dll
+C:\Users\raducu\Desktop\Proiecte\Networking\Networking\Executor\bin\Debug\net6.0\Domain.dll
+C:\Users\raducu\Desktop\Proiecte\Networking\Networking\Executor\bin\Debug\net6.0\Application.pdb
+C:\Users\raducu\Desktop\Proiecte\Networking\Networking\Executor\bin\Debug\net6.0\Domain.pdb
+C:\Users\raducu\Desktop\Proiecte\Networking\Networking\Executor\obj\Debug\net6.0\Executor.csproj.CopyComplete
+C:\Users\raducu\Desktop\Proiecte\Networking\Networking\Executor\obj\Debug\net6.0\Executor.dll
+C:\Users\raducu\Desktop\Proiecte\Networking\Networking\Executor\obj\Debug\net6.0\refint\Executor.dll
+C:\Users\raducu\Desktop\Proiecte\Networking\Networking\Executor\obj\Debug\net6.0\Executor.pdb
+C:\Users\raducu\Desktop\Proiecte\Networking\Networking\Executor\obj\Debug\net6.0\ref\Executor.dll

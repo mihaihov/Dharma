@@ -8,5 +8,6 @@ namespace Application.Contracts.Executor
 {
     public interface IBaseExecutor
     {
+        public Task<string> ExecutePlaybookAsync(string playbookName);
     }
 }
