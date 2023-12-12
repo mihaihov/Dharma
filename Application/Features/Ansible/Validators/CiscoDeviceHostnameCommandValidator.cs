@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace Application.Features.Ansible.Validators
 {
-    public class CiscoDeviceInformationCommandValidator : AbstractValidator<CiscoDeviceInformationCommand>
+    public class CiscoDeviceHostnameCommandValidator : AbstractValidator<CiscoDeviceHostnameCommand>
     {
-        public CiscoDeviceInformationCommandValidator()
+        public CiscoDeviceHostnameCommandValidator()
         {
-            RuleFor(p => p.PlaybookName).NotEmpty().NotNull();
+            RuleFor(p => p.PlaybookExecutorName).NotEmpty().NotNull();
         }
     }
 }

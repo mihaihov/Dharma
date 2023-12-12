@@ -8,8 +8,8 @@ using System.Threading.Tasks;
 
 namespace Application.Features.Ansible.Commands
 {
-    public class CiscoDeviceInformationCommand : IRequest<CiscoDeviceInformationCommandResponse>
+    public class CiscoDeviceHostnameCommand : IRequest<CiscoDeviceHostnameCommandResponse>
     {
-        public string? PlaybookName { get; set; }
+        public string PlaybookExecutorName { get; set; } = string.Empty;
     }
 }

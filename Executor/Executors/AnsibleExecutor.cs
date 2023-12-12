@@ -15,28 +15,34 @@ namespace Executor.Executors
         public IPAddress? RedHatMachineIP { get; set; }
         public string? InventoryPath { get; set; }
         public string? PlaybooksPath { get; set; }
+        public string? PlaybookExecutorsPath { get; set; }
+
+        public string? AnsibleConnectionUserName { get; set; }
+        public string? AnsibleConnectionPassword { get; set; }
 
         public AnsibleExecutor(IConfiguration configuration)
         {
             var ansibleMachineInformation = configuration.GetSection("AnsibleHostMachine");
-
             RedHatMachineIP = System.Net.IPAddress.Parse((string)ansibleMachineInformation["IP"]);
             InventoryPath = (string)ansibleMachineInformation["InventoryPath"];
             PlaybooksPath = (string)ansibleMachineInformation["PlaybooksPath"];
+            PlaybookExecutorsPath = (string)ansibleMachineInformation["PlaybookExecutorsPath"];
+
+            var ansibleConnectionParameters = configuration.GetSection("AnsibleHostConnectionParameters");
+            AnsibleConnectionUserName = (string)ansibleConnectionParameters["Username"];
+            AnsibleConnectionPassword = (string)ansibleConnectionParameters["Password"];
+
         }
 
-        public string ExecutePlaybookMockAsync(string playbookName)
+        public string ExecutePlaybookMockAsync(string playbookExecutorName)
         {
-            // connect remotely to lro01-asn-p02 and execute the playbook. 
-            // Check ChatGPT - Determine SNMP version
-
-            using (var client = new SshClient(RedHatMachineIP!.ToString(), 22, "mihairaducu", "LiDl!2#41@3$"))
+            using (var client = new SshClient(RedHatMachineIP!.ToString(), 22, AnsibleConnectionUserName, AnsibleConnectionPassword))
             {
                 client.Connect();
 
                 if(client.IsConnected)
                 {
-                    string command = "ansible-playbook -i " + InventoryPath + " " + PlaybooksPath + "/" + playbookName;
+                    string command = PlaybookExecutorsPath + playbookExecutorName;
                     var result = client.RunCommand(command);
 
                     client.Disconnect();

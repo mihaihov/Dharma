@@ -33,8 +33,29 @@ namespace Api.Controllers
             return Ok(result);
         }
 
-        [HttpGet("ciscodeviceinformation", Name = "GetCiscoDeviceInformation")]
-        public async Task<ActionResult<CiscoDeviceInformationCommandResponse>> GetCiscoDeviceInformation([FromBody] CiscoDeviceInformationCommand command)
+        [HttpGet("ciscohostname", Name = "GetCiscoHostname")]
+        public async Task<ActionResult<CiscoDeviceHostnameCommandResponse>> GetCiscoDeviceInformation([FromBody] CiscoDeviceHostnameCommand command)
+        {
+            var result = await _mediator.Send(command);
+            return Ok(result);
+        }
+
+        [HttpGet("ciscosoftwareinformation", Name ="GetCiscoSoftwareInformation")]
+        public async Task<ActionResult<CiscoDeviceSoftwareInformationCommandResponse>> GetCiscoSoftwareInformation([FromBody] CiscoDeviceHostnameCommand command)
+        {
+            var result = await _mediator.Send(command);
+            return Ok(result);
+        }
+
+        [HttpGet("ciscosoftwareversion", Name ="GetCiscoSoftwareVersion")]
+        public async Task<ActionResult<CiscoSoftwareVersionCommandResponse>> GetCiscoSoftwareVersion([FromBody] CiscoSoftwareVersionCommand command)
+        {
+            var result = await _mediator.Send(command);
+            return Ok(result);
+        }
+
+        [HttpGet("getciscosnmpv3configuration", Name = "GetCiscoSnmpV3Configuration")]
+        public async Task<ActionResult<GetCiscoSnmpV3CommandResponse>> GetCiscoSnmpV3Configuration([FromBody] GetCiscoSnmpV3Command command)
         {
             var result = await _mediator.Send(command);
             return Ok(result);
