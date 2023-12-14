@@ -7,6 +7,9 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using Renci.SshNet;
+using Persistence;
+using Domain.Entities.MockEntities;
+using Persistence.Repositories;
 
 namespace Executor.Executors
 {
@@ -20,18 +23,26 @@ namespace Executor.Executors
         public string? AnsibleConnectionUserName { get; set; }
         public string? AnsibleConnectionPassword { get; set; }
 
-        public AnsibleExecutor(IConfiguration configuration)
+        public AnsibleExecutor(ApplicationDbContext context, IConfiguration configuration)
         {
-            var ansibleMachineInformation = configuration.GetSection("AnsibleHostMachine");
-            RedHatMachineIP = System.Net.IPAddress.Parse((string)ansibleMachineInformation["IP"]);
-            InventoryPath = (string)ansibleMachineInformation["InventoryPath"];
-            PlaybooksPath = (string)ansibleMachineInformation["PlaybooksPath"];
-            PlaybookExecutorsPath = (string)ansibleMachineInformation["PlaybookExecutorsPath"];
+            var currentSession = GetSession(context);
 
-            var ansibleConnectionParameters = configuration.GetSection("AnsibleHostConnectionParameters");
-            AnsibleConnectionUserName = (string)ansibleConnectionParameters["Username"];
-            AnsibleConnectionPassword = (string)ansibleConnectionParameters["Password"];
+            RedHatMachineIP = System.Net.IPAddress.Parse(currentSession.Result.IP!);
+            InventoryPath = currentSession.Result.InventoryPath;
+            PlaybooksPath = currentSession.Result.PlaybooksPath;
+            PlaybookExecutorsPath = currentSession.Result.PlaybookExecutorsPath;
 
+            AnsibleConnectionUserName = currentSession.Result.Username;
+            AnsibleConnectionPassword = currentSession.Result.Password;
+
+
+        }
+
+        private async Task<MockSession> GetSession(ApplicationDbContext context)
+        {
+            var repository = new BaseRepository<MockSession>(context);
+            var currentSession = await repository.ListAllAsync();
+            return currentSession[0];
         }
 
         public string ExecutePlaybookMockAsync(string playbookExecutorName)

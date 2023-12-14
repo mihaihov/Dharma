@@ -22,6 +22,47 @@ namespace Persistence.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
+            modelBuilder.Entity("Domain.Entities.MockEntities.MockSession", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("IP")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("InventoryPath")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Password")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PlaybookExecutorsPath")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PlaybooksPath")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Username")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("MockSessions");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("eb0f9f1b-8d36-4fe1-88eb-194a4b7129fb"),
+                            IP = "10.84.9.169",
+                            InventoryPath = "/etc/ansible/inventory/",
+                            Password = "TurnThat62To125!",
+                            PlaybookExecutorsPath = "/etc/ansible/playbooks/playbookExecutors/",
+                            PlaybooksPath = "/etc/ansible/playbooks/",
+                            Username = "mihairaducu"
+                        });
+                });
+
             modelBuilder.Entity("Domain.Entities.NetworkDevice", b =>
                 {
                     b.Property<Guid>("Id")
