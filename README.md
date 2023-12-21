@@ -1,4 +1,4 @@
-This project is a network management and automation solution designed to streamline the configuration, monitoring, and maintenance of networking devices. Built on the principles of Clean Architecture, the project leverages a .NET Core API for exposing RESTful APIs and Ansible playbooks for interacting with networking devices.
+This is an on-going project for network management and automation solution designed to streamline the configuration, monitoring, and maintenance of networking devices. Built on the principles of Clean Architecture, the project leverages a .NET Core API for exposing RESTful APIs and Ansible playbooks for interacting with networking devices.
 
 **Key Features:**
 
