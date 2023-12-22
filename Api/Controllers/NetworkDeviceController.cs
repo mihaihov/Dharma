@@ -67,5 +67,19 @@ namespace Api.Controllers
             var result = await _mediator.Send(command);
             return Ok(result);
         }
+
+        [HttpGet("ciscogatherfacts", Name = "CiscoGatherFacts")]
+        public async Task<ActionResult<CiscoGatherFactsCommandResponse>> CiscoGatherFacts([FromBody] CiscoGatherFactsCommand command)
+        {
+            var result = await _mediator.Send(command);
+            return Ok(result);
+        }
+
+        [HttpGet("getciscontp", Name = "GetCiscoNTP")]
+        public async Task<ActionResult<GetCiscoNTPCommandResponse>> GetCiscoNTP([FromBody] GetCiscoNTPCommand command)
+        {
+            var result = await _mediator.Send(command);
+            return Ok(result);
+        }
     }
 }

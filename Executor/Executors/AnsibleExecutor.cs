@@ -10,6 +10,8 @@ using Renci.SshNet;
 using Persistence;
 using Domain.Entities.MockEntities;
 using Persistence.Repositories;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
+using System.Diagnostics;
 
 namespace Executor.Executors
 {
@@ -49,9 +51,15 @@ namespace Executor.Executors
         {
             using (var client = new SshClient(RedHatMachineIP!.ToString(), 22, AnsibleConnectionUserName, AnsibleConnectionPassword))
             {
+                Stopwatch stopwatch = new Stopwatch();
+                stopwatch.Start();
+
                 client.Connect();
 
-                if(client.IsConnected)
+                stopwatch.Stop();
+                Console.WriteLine("Execution time is: " + stopwatch.ElapsedMilliseconds);
+
+                if (client.IsConnected)
                 {
                     string command = PlaybookExecutorsPath + playbookExecutorName;
                     var result = client.RunCommand(command);
