@@ -41,7 +41,7 @@ namespace Application.Features.Ansible.Commands
 
             if(response.Success)
             {
-                var result = _executor.ExecutePlaybookMockAsync(command.PlaybookExecutorName);
+                var result = await _executor.ExecutePlaybookMockAsync(command.PlaybookExecutorName);
                 response.NTPServers = JsonSerializer.Deserialize <List<List<string>>> (result);
             }
 

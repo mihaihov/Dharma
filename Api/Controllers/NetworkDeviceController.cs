@@ -81,5 +81,12 @@ namespace Api.Controllers
             var result = await _mediator.Send(command);
             return Ok(result);
         }
+
+        [HttpGet("getciscodhcp", Name = "GetCiscoDHCP")]
+        public async Task<ActionResult<GetCiscoDhcpCommandResponse>> GetCiscoDHCP([FromBody] GetCiscoDhcpCommand command)
+        {
+            var result = await _mediator.Send(command);
+            return Ok(result);
+        }
     }
 }

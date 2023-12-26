@@ -35,7 +35,7 @@ namespace Application.Features.Ansible.Commands
 
             if(response.Success)
             {
-                var result = _baseExecutor.ExecutePlaybookMockAsync(request.PlaybookExecutorName);
+                var result = await _baseExecutor.ExecutePlaybookMockAsync(request.PlaybookExecutorName);
                 response.Hostname = JsonSerializer.Deserialize<List<string>>(result);
             }
 

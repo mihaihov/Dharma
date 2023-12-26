@@ -38,7 +38,7 @@ namespace Application.Features.Ansible.Commands
 
             if(response.Success)
             {
-                var result = _executor.ExecutePlaybookMockAsync(request.PlaybookExecutorName);
+                var result = await _executor.ExecutePlaybookMockAsync(request.PlaybookExecutorName);
                 response.Interfaces = JsonSerializer.Deserialize<List<List<string>>>(result);
             }
 

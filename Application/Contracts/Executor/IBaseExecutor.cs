@@ -8,6 +8,6 @@ namespace Application.Contracts.Executor
 {
     public interface IBaseExecutor
     {
-        public string ExecutePlaybookMockAsync(string playbookExecutorName);
+        public Task<string> ExecutePlaybookMockAsync(string playbookExecutorName);
     }
 }

@@ -47,30 +47,27 @@ namespace Executor.Executors
             return currentSession[0];
         }
 
-        public string ExecutePlaybookMockAsync(string playbookExecutorName)
+        public async Task<string> ExecutePlaybookMockAsync(string playbookExecutorName)
         {
-            using (var client = new SshClient(RedHatMachineIP!.ToString(), 22, AnsibleConnectionUserName, AnsibleConnectionPassword))
+            return await Task.Run(() =>
             {
-                Stopwatch stopwatch = new Stopwatch();
-                stopwatch.Start();
-
-                client.Connect();
-
-                stopwatch.Stop();
-                Console.WriteLine("Execution time is: " + stopwatch.ElapsedMilliseconds);
-
-                if (client.IsConnected)
+                using (var client = new SshClient(RedHatMachineIP!.ToString(), 22, AnsibleConnectionUserName, AnsibleConnectionPassword))
                 {
-                    string command = PlaybookExecutorsPath + playbookExecutorName;
-                    var result = client.RunCommand(command);
+                    client.Connect();
 
-                    client.Disconnect();
+                    if (client.IsConnected)
+                    {
+                        string command = PlaybookExecutorsPath + playbookExecutorName;
+                        var result = client.RunCommand(command);
 
-                    return result.Result ;
+                        client.Disconnect();
+
+                        return result.Result;
+                    }
                 }
-            }
 
-            return string.Empty;
+                return string.Empty;
+            });
         }
     }
 }
