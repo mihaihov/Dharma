@@ -23,10 +23,9 @@ namespace Application.Features.Ansible.Commands
         public async Task<GetCiscoSnmpV3CommandResponse> Handle(GetCiscoSnmpV3Command request, CancellationToken cancellationToken)
         {
             var response = new GetCiscoSnmpV3CommandResponse();
-            var validator = new GetCiscoSnmpV3CommandValidator();
-            var validationResult = await validator.ValidateAsync(request);
+            var validationResult = await request.Validate();
 
-            if(validationResult.Errors.Any()) {
+            if (validationResult.Errors.Any()) {
                 response.Success = false;
                 response.ValidationErrors = new List<string>();
                 foreach(var error in validationResult.Errors) {

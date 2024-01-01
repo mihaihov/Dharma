@@ -24,10 +24,9 @@ namespace Application.Features.Ansible.Commands
         {
             var response = new CiscoSoftwareVersionCommandResponse();
 
-            var validator = new CiscoSoftwareVersionCommandValidator();
-            var validationResult = await validator.ValidateAsync(request);
+            var validationResult = await request.Validate();
 
-            if(validationResult.Errors.Any())
+            if (validationResult.Errors.Any())
             {
                 response.Success = false;
                 response.ValidationErrors = new List<string>();

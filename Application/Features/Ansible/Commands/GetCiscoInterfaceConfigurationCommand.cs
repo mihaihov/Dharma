@@ -9,7 +9,8 @@ using System.Threading.Tasks;
 
 namespace Application.Features.Ansible.Commands
 {
-    public class GetCiscoInterfacesCommand : AnsibleBaseCommand, IRequest<GetCiscoInterfacesCommandResponse>
+    public class GetCiscoInterfaceConfigurationCommand : AnsibleBaseCommand, IRequest<GetCiscoInterfaceConfigurationCommandResponse>
     {
+        public string InterfaceName { get; set; } = string.Empty;
     }
 }

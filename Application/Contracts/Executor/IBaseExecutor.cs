@@ -9,5 +9,6 @@ namespace Application.Contracts.Executor
     public interface IBaseExecutor
     {
         public Task<string> ExecutePlaybookMockAsync(string playbookExecutorName);
+        public Task<string> ExecutePlaybookWithParametersMockAsync(string playbookExecutorName, List<string> parameters);
     }
 }

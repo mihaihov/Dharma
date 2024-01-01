@@ -23,8 +23,7 @@ namespace Application.Features.Ansible.Commands
         public async Task<GetCiscoInterfacesCommandResponse> Handle(GetCiscoInterfacesCommand request, CancellationToken cancellationToken)
         {
             var response = new GetCiscoInterfacesCommandResponse();
-            var validator = new GetCiscoInterfacesCommandValidator();
-            var validationResult = await validator.ValidateAsync(request);
+            var validationResult = await request.Validate();
 
             if (validationResult.Errors.Any())
             {

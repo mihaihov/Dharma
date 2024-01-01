@@ -69,5 +69,36 @@ namespace Executor.Executors
                 return string.Empty;
             });
         }
+
+        public async Task<string> ExecutePlaybookWithParametersMockAsync(string playbookExecutorName, List<string> parameters)
+        {
+            return await Task.Run(() =>
+            {
+                using (var client = new SshClient(RedHatMachineIP!.ToString(), 22, AnsibleConnectionUserName, AnsibleConnectionPassword))
+                {
+                    client.Connect();
+
+                    if (client.IsConnected)
+                    {
+                        StringBuilder command = new StringBuilder();
+                        command.Append(PlaybookExecutorsPath);
+                        command.Append(playbookExecutorName);
+                        foreach (var par in parameters)
+                        {
+                            command.Append(" ");
+                            command.Append(par.ToString());
+                        }
+
+                        var result = client.RunCommand(command.ToString());
+
+                        client.Disconnect();
+
+                        return result.Result;
+                    }
+                }
+
+                return string.Empty;
+            });
+        }
     }
 }

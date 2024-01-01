@@ -2,17 +2,18 @@
 using FluentValidation;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Application.Features.Ansible.Validators
 {
-    public class GetCiscoInterfacesCommandValidator : AbstractValidator<GetCiscoInterfacesCommand>
+    public class GetCiscoInterfaceConfigurationCommandValidator : AbstractValidator<GetCiscoInterfaceConfigurationCommand>
     {
-        public GetCiscoInterfacesCommandValidator()
+        public GetCiscoInterfaceConfigurationCommandValidator()
         {
-            RuleFor(p => p.PlaybookExecutorName).NotEmpty().NotEmpty();
+            RuleFor(p => p.InterfaceName).NotEmpty().NotNull();
         }
     }
 }

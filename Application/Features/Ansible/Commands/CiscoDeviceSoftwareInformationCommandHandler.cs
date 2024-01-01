@@ -20,10 +20,9 @@ namespace Application.Features.Ansible.Commands
         {
             CiscoDeviceSoftwareInformationCommandResponse response = new CiscoDeviceSoftwareInformationCommandResponse();
 
-            var validator = new CiscoDeviceSoftwareInformationCommandValidator();
-            var validationResult = await validator.ValidateAsync(request);
+            var validationResult = await request.Validate();
 
-            if(validationResult.Errors.Any())
+            if (validationResult.Errors.Any())
             {
                 response.Success = false;
                 response.ValidationErrors = new List<string>();

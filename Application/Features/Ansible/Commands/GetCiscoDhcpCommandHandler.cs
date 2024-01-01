@@ -25,8 +25,7 @@ namespace Application.Features.Ansible.Commands
         public async Task<GetCiscoDhcpCommandResponse> Handle(GetCiscoDhcpCommand command, CancellationToken cancellationToken)
         {
             var response = new GetCiscoDhcpCommandResponse();
-            var validator = new GetCiscoDhcpCommandValidator();
-            var validationResult = await validator.ValidateAsync(command);
+            var validationResult = await command.Validate();
 
             if (validationResult.Errors.Any())
             {

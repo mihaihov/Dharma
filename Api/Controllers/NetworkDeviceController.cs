@@ -88,5 +88,19 @@ namespace Api.Controllers
             var result = await _mediator.Send(command);
             return Ok(result);
         }
+
+        [HttpGet("getciscointerfaceconfiguration", Name ="GetCiscoInterfaceConfiguration")]
+        public async Task<ActionResult<GetCiscoInterfaceConfigurationCommandResponse>> GetCiscoInterfaceConfiguration([FromBody] GetCiscoInterfaceConfigurationCommand command)
+        {
+            var result = await _mediator.Send(command);
+            return Ok(result);
+        }
+
+        [HttpGet("getciscoacl", Name="GetCiscoAcl")]
+        public async Task<ActionResult<GetCiscoAclCommandResponse>> GetCiscoAcl([FromBody] GetCiscoAclCommand command)
+        {
+            var result = await _mediator.Send(command);
+            return Ok(result);
+        }
     }
 }

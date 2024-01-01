@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Application.Features.Ansible.Commands
 {
-    public class GetCiscoInterfacesCommand : AnsibleBaseCommand, IRequest<GetCiscoInterfacesCommandResponse>
+    public class GetCiscoAclCommand : AnsibleBaseCommand, IRequest<GetCiscoAclCommandResponse>
     {
     }
 }

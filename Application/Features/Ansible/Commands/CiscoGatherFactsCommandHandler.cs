@@ -23,14 +23,13 @@ namespace Application.Features.Ansible.Commands
         public async Task<CiscoGatherFactsCommandResponse> Handle(CiscoGatherFactsCommand request, CancellationToken cancellationToken)
         {
             var response  = new CiscoGatherFactsCommandResponse();
-            var validator = new CiscoGatherFactsCommandValidator();
-            var validationResponse = await validator.ValidateAsync(request);
+            var validationResult = await request.Validate();
 
-            if(validationResponse.Errors.Any())
+            if (validationResult.Errors.Any())
             {
                 response.Success = false;
                 response.ValidationErrors = new List<string>();
-                foreach(var error in validationResponse.Errors)
+                foreach(var error in validationResult.Errors)
                 {
                     response.ValidationErrors.Add(error.ErrorMessage);
                 }

@@ -1,4 +1,5 @@
-﻿using Application.Features.Ansible.Responses;
+﻿using Application.Common;
+using Application.Features.Ansible.Responses;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -8,8 +9,7 @@ using System.Threading.Tasks;
 
 namespace Application.Features.Ansible.Commands
 {
-    public class CiscoGatherFactsCommand : IRequest<CiscoGatherFactsCommandResponse>
+    public class CiscoGatherFactsCommand : AnsibleBaseCommand, IRequest<CiscoGatherFactsCommandResponse>
     {
-        public string PlaybookExecutorName { get; set; } = string.Empty;
     }
 }
