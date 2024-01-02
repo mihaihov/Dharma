@@ -10,6 +10,7 @@ namespace Domain.Entities.Cisco
     {
         public Guid Id { get; set; }
         
+        public Guid CiscoDeviceId { get;set; }
         public CiscoDevice? CiscoDevice { get; set; }
 
         public List<CiscoDeviceInterface>? InterfaceList { get; set; }
