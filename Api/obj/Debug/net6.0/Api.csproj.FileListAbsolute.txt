@@ -84,3 +84,4 @@ C:\Users\raducu\Desktop\Proiecte\Networking\Networking\Api\bin\Debug\net6.0\SshN
 C:\Users\raducu\Desktop\Proiecte\Networking\Networking\Api\bin\Debug\net6.0\System.Xml.XPath.XmlDocument.dll
 C:\Users\raducu\Desktop\Proiecte\Networking\Networking\Api\bin\Debug\net6.0\Executor.dll
 C:\Users\raducu\Desktop\Proiecte\Networking\Networking\Api\bin\Debug\net6.0\Executor.pdb
+C:\Users\raducu\Desktop\Proiecte\Networking\Networking\Api\bin\Debug\net6.0\Newtonsoft.Json.dll

@@ -1,6 +1,7 @@
 ﻿using Application.Contracts.Executor;
 using Application.Features.Ansible.Responses;
 using Application.Features.Ansible.Validators;
+using Domain.Entities.Cisco;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -39,7 +40,8 @@ namespace Application.Features.Ansible.Commands
             if(response.Success)
             {
                 var result = await _executor.ExecutePlaybookWithParametersMockAsync(command.PlaybookExecutorName, new List<string>() { command.InterfaceName});
-                response.Configuration = JsonSerializer.Deserialize<List<List<string>>>(result);
+                string resultAsString = result.ToString().Replace("'", "");
+                response.Configuration = Newtonsoft.Json.JsonConvert.DeserializeObject<List<CiscoDeviceInterface>>(resultAsString);
             }
 
 
