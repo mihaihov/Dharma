@@ -188,10 +188,7 @@ namespace Persistence.Migrations
                     b.Property<Guid?>("CiscoConfigurationId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("PrimaryNtpServer")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("SecondaryNtpServer")
+                    b.Property<string>("ServerList")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");

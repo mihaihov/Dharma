@@ -1,4 +1,5 @@
 ﻿using Application.Common;
+using Domain.Entities.Cisco;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,6 @@ namespace Application.Features.Ansible.Responses
 {
     public class GetCiscoNTPCommandResponse : BaseResponse
     {
-        public List<List<string>>? NTPServers { get; set; }
+        public List<CiscoNtp>? NTPServers { get; set; }
     }
 }

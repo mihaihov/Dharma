@@ -1,6 +1,7 @@
 ﻿using Application.Contracts.Executor;
 using Application.Features.Ansible.Responses;
 using Application.Features.Ansible.Validators;
+using Domain.Entities.Cisco;
 using FluentValidation;
 using MediatR;
 using System;
@@ -41,7 +42,7 @@ namespace Application.Features.Ansible.Commands
             if(response.Success)
             {
                 var result = await _executor.ExecutePlaybookMockAsync(command.PlaybookExecutorName);
-                response.NTPServers = JsonSerializer.Deserialize <List<List<string>>> (result);
+                response.NTPServers = Newtonsoft.Json.JsonConvert.DeserializeObject<List<CiscoNtp>>(result);
             }
 
 

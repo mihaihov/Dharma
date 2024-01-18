@@ -52,11 +52,14 @@ namespace Persistence
                 .HasOne(ciscoDhcp => ciscoDhcp.CiscoConfiguration)
                 .WithMany(ciscoConfiguration => ciscoConfiguration.DhcpList)
                 .HasForeignKey(ciscoDhcp => ciscoDhcp.CiscoConfigurationId);
-            
+
             modelBuilder.Entity<CiscoNtp>()
                 .HasOne(ciscoNtp => ciscoNtp.CiscoConfiguration)
                 .WithMany(ciscoConfiguration => ciscoConfiguration.NtpList)
                 .HasForeignKey(ciscoNtp => ciscoNtp.CiscoConfigurationId);
+
+            modelBuilder.Entity<CiscoNtp>()
+                .Property(ciscoNtp => ciscoNtp.ServerList).HasConversion(v => string.Join(',', v!), v => v.Split(',', StringSplitOptions.RemoveEmptyEntries));
 
             modelBuilder.Entity<CiscoSnmp>()
                 .HasOne(ciscoSnmp => ciscoSnmp.CiscoConfiguration)
