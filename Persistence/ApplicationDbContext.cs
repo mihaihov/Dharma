@@ -43,6 +43,9 @@ namespace Persistence
                 .WithMany(ciscoConfiguration => ciscoConfiguration.AclList)
                 .HasForeignKey(ciscoAcl => ciscoAcl.CiscoConfigurationId);
 
+            modelBuilder.Entity<CiscoAcl>()
+                .Property(ciscoAcl => ciscoAcl.Rules).HasConversion(v => string.Join(',', v!), v=> v.Split(',', StringSplitOptions.RemoveEmptyEntries));
+
             modelBuilder.Entity<CiscoDeviceInterface>()
                 .HasOne(ciscoDeviceInterface => ciscoDeviceInterface.CiscoConfiguration)
                 .WithMany(ciscoConfiguration => ciscoConfiguration.InterfaceList)
@@ -55,8 +58,8 @@ namespace Persistence
 
             modelBuilder.Entity<CiscoNtp>()
                 .HasOne(ciscoNtp => ciscoNtp.CiscoConfiguration)
-                .WithMany(ciscoConfiguration => ciscoConfiguration.NtpList)
-                .HasForeignKey(ciscoNtp => ciscoNtp.CiscoConfigurationId);
+                .WithOne(ciscoConfiguration => ciscoConfiguration.Ntp)
+                .HasForeignKey<CiscoConfiguration>(ciscoNtp => ciscoNtp.CiscoNtpId);
 
             modelBuilder.Entity<CiscoNtp>()
                 .Property(ciscoNtp => ciscoNtp.ServerList).HasConversion(v => string.Join(',', v!), v => v.Split(',', StringSplitOptions.RemoveEmptyEntries));

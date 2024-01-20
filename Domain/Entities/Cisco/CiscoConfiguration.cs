@@ -15,7 +15,8 @@ namespace Domain.Entities.Cisco
 
         public List<CiscoDeviceInterface>? InterfaceList { get; set; }
 
-        public List<CiscoNtp>? NtpList { get; set; }
+        public Guid CiscoNtpId { get; set; }
+        public CiscoNtp? Ntp { get; set; }
 
         public List<CiscoAcl>? AclList { get; set;}
 

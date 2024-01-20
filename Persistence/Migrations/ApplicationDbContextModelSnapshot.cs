@@ -28,7 +28,7 @@ namespace Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("AclRule")
+                    b.Property<string>("AclName")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("AclType")
@@ -36,6 +36,9 @@ namespace Persistence.Migrations
 
                     b.Property<Guid?>("CiscoConfigurationId")
                         .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Rules")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -53,9 +56,15 @@ namespace Persistence.Migrations
                     b.Property<Guid>("CiscoDeviceId")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<Guid>("CiscoNtpId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.HasKey("Id");
 
                     b.HasIndex("CiscoDeviceId")
+                        .IsUnique();
+
+                    b.HasIndex("CiscoNtpId")
                         .IsUnique();
 
                     b.ToTable("CiscoConfigurations");
@@ -185,15 +194,10 @@ namespace Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid?>("CiscoConfigurationId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<string>("ServerList")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("CiscoConfigurationId");
 
                     b.ToTable("CiscoNtp");
                 });
@@ -333,7 +337,15 @@ namespace Persistence.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("Domain.Entities.Cisco.CiscoNtp", "Ntp")
+                        .WithOne("CiscoConfiguration")
+                        .HasForeignKey("Domain.Entities.Cisco.CiscoConfiguration", "CiscoNtpId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("CiscoDevice");
+
+                    b.Navigation("Ntp");
                 });
 
             modelBuilder.Entity("Domain.Entities.Cisco.CiscoDeviceInterface", b =>
@@ -349,15 +361,6 @@ namespace Persistence.Migrations
                 {
                     b.HasOne("Domain.Entities.Cisco.CiscoConfiguration", "CiscoConfiguration")
                         .WithMany("DhcpList")
-                        .HasForeignKey("CiscoConfigurationId");
-
-                    b.Navigation("CiscoConfiguration");
-                });
-
-            modelBuilder.Entity("Domain.Entities.Cisco.CiscoNtp", b =>
-                {
-                    b.HasOne("Domain.Entities.Cisco.CiscoConfiguration", "CiscoConfiguration")
-                        .WithMany("NtpList")
                         .HasForeignKey("CiscoConfigurationId");
 
                     b.Navigation("CiscoConfiguration");
@@ -380,12 +383,15 @@ namespace Persistence.Migrations
 
                     b.Navigation("InterfaceList");
 
-                    b.Navigation("NtpList");
-
                     b.Navigation("SnmpList");
                 });
 
             modelBuilder.Entity("Domain.Entities.Cisco.CiscoDevice", b =>
+                {
+                    b.Navigation("CiscoConfiguration");
+                });
+
+            modelBuilder.Entity("Domain.Entities.Cisco.CiscoNtp", b =>
                 {
                     b.Navigation("CiscoConfiguration");
                 });

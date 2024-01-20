@@ -1,4 +1,5 @@
 ﻿using Application.Common;
+using Domain.Entities.Cisco;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,6 @@ namespace Application.Features.Ansible.Responses
 {
     public class GetCiscoAclCommandResponse : BaseResponse
     {
-        public List<List<string>>? ACL { get; set; }
+        public List<CiscoAcl>? Acl { get; set; }
     }
 }

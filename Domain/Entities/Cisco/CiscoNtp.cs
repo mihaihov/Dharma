@@ -11,7 +11,6 @@ namespace Domain.Entities.Cisco
         public Guid Id { get; set; }
         public string[]? ServerList { get; set; }
 
-        public Guid? CiscoConfigurationId { get; set; }
         public CiscoConfiguration? CiscoConfiguration { get; set; }
     }
 }
