@@ -172,8 +172,8 @@ namespace Persistence.Migrations
                     b.Property<string>("Ip")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime?>("Lease")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("Lease")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Mask")
                         .HasColumnType("nvarchar(max)");
@@ -213,9 +213,6 @@ namespace Persistence.Migrations
 
                     b.Property<Guid?>("CiscoConfigurationId")
                         .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("CommunityString")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("GroupName")
                         .HasColumnType("nvarchar(max)");

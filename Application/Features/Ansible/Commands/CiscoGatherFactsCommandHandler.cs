@@ -38,8 +38,7 @@ namespace Application.Features.Ansible.Commands
             if(response.Success)
             {
                 var result = await _executor.ExecutePlaybookMockAsync(request.PlaybookExecutorName);
-                string resultAsString = result.ToString().Replace("'", "");
-                response.Facts = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Domain.Entities.Cisco.CiscoDevice>>(resultAsString);
+                response.Facts = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Domain.Entities.Cisco.CiscoDevice>>(result);
             }
 
 

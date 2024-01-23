@@ -1,9 +1,11 @@
 ﻿using Application.Contracts.Executor;
 using Application.Features.Ansible.Responses;
 using Application.Features.Ansible.Validators;
+using Domain.Entities.Cisco;
 using MediatR;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Text.Json;
@@ -40,7 +42,8 @@ namespace Application.Features.Ansible.Commands
             if(response.Success)
             {
                 var result = await _executor.ExecutePlaybookMockAsync(command.PlaybookExecutorName);
-                response.DHCP = JsonSerializer.Deserialize<List<List<string>>>(result);
+                response.DhcpConfig = Newtonsoft.Json.JsonConvert.DeserializeObject<List<CiscoDhcp>>(result);
+                
             }
 
             return response;

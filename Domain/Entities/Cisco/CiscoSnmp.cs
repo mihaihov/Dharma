@@ -9,7 +9,6 @@ namespace Domain.Entities.Cisco
     public class CiscoSnmp
     {
         public Guid Id { get; set; }
-        public string? CommunityString { get; set; }
         public string? GroupName { get; set; }
         public string? UserName { get; set; }
         public string? AuthProtocol { get; set; }

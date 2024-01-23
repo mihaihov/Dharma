@@ -12,7 +12,7 @@ namespace Domain.Entities.Cisco
         public string? PoolName { get;set; }
         public string? Ip { get; set; }
         public string? Mask { get;set; }
-        public DateTime? Lease { get; set; }
+        public string? Lease { get; set; }
         public string? DomainName { get; set;}
         public string? Gateway { get; set; }
         public string? Dns { get; set; }

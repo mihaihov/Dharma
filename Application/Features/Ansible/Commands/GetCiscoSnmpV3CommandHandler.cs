@@ -1,6 +1,7 @@
 ﻿using Application.Contracts.Executor;
 using Application.Features.Ansible.Responses;
 using Application.Features.Ansible.Validators;
+using Domain.Entities.Cisco;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -36,7 +37,7 @@ namespace Application.Features.Ansible.Commands
             if(response.Success)
             {
                 var result = await _executor.ExecutePlaybookMockAsync(request.PlaybookExecutorName);
-                response.SnmpV3Profiles = JsonSerializer.Deserialize<List<string>>(result);
+                response.SnmpV3Profiles = Newtonsoft.Json.JsonConvert.DeserializeObject<List<List<CiscoSnmp>>>(result);
             }
 
             return response;
